@@ -1309,6 +1309,7 @@ local lang = {
     ["en"] = "Englisch",
     ["it"] = "Italienisch",
     ["jp"] = "Japanisch",
+	["cn"]  = "Chinesisch",
   },
   ["login"] = {
     ["add_captive_portal_user"] = "Füge Captive Portal User hinzu",

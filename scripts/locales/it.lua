@@ -2374,6 +2374,7 @@ local lang = {
     ["it"] = "Italiano",
     ["jp"] = "Giapponese",
     ["pt"] = "Portoghese",
+	["cn"]  = "Cinese",
   },
   ["login"] = {
     ["add_captive_portal_user"] = "Aggiungi Utente Captive Portal",

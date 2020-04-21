@@ -1656,6 +1656,7 @@ local lang = {
     ["en"] = "Inglês",
     ["it"] = "Italiano",
     ["jp"] = "Japonês",
+	["cn"]  = "Chinês",
   },
   ["login"] = {
     ["add_captive_portal_user"] = "Adicionar usuário do portal cativo",

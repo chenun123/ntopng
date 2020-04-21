@@ -790,7 +790,7 @@ local lang = {
     ["historical_data_explorer"] = "Historical Data Explorer",
     ["host_name"] = "Host Name",
     ["host_talkers"] = "%{host} talkers",
-    ["hosts_talking_proto_with"] = "Hosts talking %{proto} with {host}",
+    ["hosts_talking_proto_with"] = "Hosts talking %{proto} with %{host}",
     ["http_host"] = "HTTP Host",
     ["http_method"] = "HTTP Method",
     ["interface_name"] = "Instance Name",
@@ -2389,6 +2389,7 @@ local lang = {
     ["it"] = "Italian",
     ["jp"] = "Japanese",
     ["pt"] = "Portuguese",
+	["cn"] = "Chinese",
   },
   ["login"] = {
     ["add_captive_portal_user"] = "Add Captive Portal User",

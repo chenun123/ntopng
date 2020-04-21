@@ -2017,6 +2017,7 @@ local lang = {
     ["it"] = "Italský",
     ["jp"] = "Japonský",
     ["pt"] = "Portugalský",
+	["cn"] = "Čínština",
   },
   ["login"] = {
     ["add_captive_portal_user"] = "Přidat uživatele zajatého portálu",

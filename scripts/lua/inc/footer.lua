@@ -40,25 +40,11 @@ end -- closes interface.isPcapDumpInterface() == false
 
 if not info.oem then
 
-print ([[
+print [[
 <footer id="n-footer">
 	<div class="container-fluid border-top">
 		<div class="row mt-2">
-			<div class="col-4 text-left">
-				<small>
-					<a href="https://www.ntop.org/products/traffic-analysis/ntop/" target="_blank">
-				  		]] .. (info.product .. ' ' .. getNtopngRelease(info) .." Edition v.".. info.version) ..[[
-					</a>
-					|
-					<a href="https://github.com/ntop/ntopng"><i class="fab fa-github"></i></a>
-				</small>
-			</div>
-			<div class="col-4 text-center">
-				<small>]].. ntop.getInfo()["copyright"] ..[[</small>
-]])
-print [[
-			</div>
-			<div class="col-4 text-right">
+			<div class="col-12 text-right">
 				<small>
 					<div class="text-right">
 						<i class="fas fa-clock"></i> <div class="d-inline-block" id='network-clock'></div> | ]] print(i18n("about.uptime")) print[[: <div class="d-inline-block" id='network-uptime'></div>

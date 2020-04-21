@@ -2516,18 +2516,18 @@ static int ntop_get_info(lua_State* vm) {
 
   lua_newtable(vm);
 #ifdef HAVE_NEDGE
-  lua_push_str_table_entry(vm, "product", ntop->getPro()->get_product_name());
+  lua_push_str_table_entry(vm, "product", (char*)"");
   lua_push_bool_table_entry(vm, "oem", ntop->getPro()->is_oem());
 #else
-  lua_push_str_table_entry(vm, "product", (char*)"ntopng");
+  lua_push_str_table_entry(vm, "product", (char*)"");
 #endif
   lua_push_str_table_entry(vm, "copyright",
 #ifdef HAVE_NEDGE
 			   ntop->getPro()->is_oem() ? (char*)"" :
 #endif
-			   (char*)"&copy; 1998-20 - ntop.org");
-  lua_push_str_table_entry(vm, "authors",   (char*)"The ntop.org team");
-  lua_push_str_table_entry(vm, "license",   (char*)"GNU GPLv3");
+			   (char*)"&copy; 1998-2020");
+  lua_push_str_table_entry(vm, "authors",   (char*)"");
+  lua_push_str_table_entry(vm, "license",   (char*)"");
   lua_push_str_table_entry(vm, "platform",  (char*)PACKAGE_MACHINE);
   lua_push_str_table_entry(vm, "version",   (char*)PACKAGE_VERSION);
   lua_push_str_table_entry(vm, "revision",  (char*)PACKAGE_REVISION);
