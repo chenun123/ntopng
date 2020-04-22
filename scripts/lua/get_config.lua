@@ -51,7 +51,7 @@ else
       send_error("tar_not_found")
     else
 
-    local tar_file = "ntopng_conf_backup.tar.gz"
+    local tar_file = "dsp_conf_backup.tar.gz"
     if ntop.isnEdge() then
        tar_file = "nedge_conf_backup.tar.gz"
     end

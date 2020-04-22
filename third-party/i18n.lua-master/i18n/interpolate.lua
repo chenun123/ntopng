@@ -24,7 +24,7 @@ local function interpolateField(string, variables)
     end)
 end
 
-local DEBUG = true
+local DEBUG = false
 
 
 function print_r ( t )
@@ -65,8 +65,8 @@ end
 local function interpolate(pattern, variables)
   variables = variables or {}
   local result = pattern
-  tprint(pattern)
-  print_r(variables)
+  -- tprint(pattern)
+  -- print_r(variables)
 
   result = interpolateValue(result, variables)
   result = interpolateField(result, variables)

@@ -20,24 +20,24 @@ page_utils.set_active_menu_entry(page_utils.menu_entries.host_explorer)
 
 dofile(dirs.installdir .. "/scripts/lua/inc/menu.lua")
 
-print([[
-	<h2>Host Explorer</h2>
+print[[
+	<h2>]] print(i18n("host_explorer")) print[[</h2>
 	<hr>
-]])
+]]
 
 -- https://www.d3-graph-gallery.com/graph/bubble_template.html
 
 
 local modes = {
-   { mode = 0, label = "All Flows" },
-   { mode = 1, label = "Unreacheable Flows" },
-   { mode = 2, label = "Misbehaving Flows" },
-   { mode = 3, label = "DNS Queries vs Replies" },
-   { mode = 4, label = "SYN Distribution" },
-   { mode = 5, label = "SYN vs RST" },
-   { mode = 6, label = "SYN vs SYNACK" },
-   { mode = 7, label = "TCP Packets Sent/Received" },
-   { mode = 8, label = "TCP Bytes Sent/Received" }
+   { mode = 0, label = i18n("host_explorer_stats.all_flows") },
+   { mode = 1, label = i18n("host_explorer_stats.unreacheable_flows") },
+   { mode = 2, label = i18n("host_explorer_stats.misbehaving_flows") },
+   { mode = 3, label = i18n("host_explorer_stats.dns_vs_replay") },
+   { mode = 4, label = i18n("host_explorer_stats.syn_dist") },
+   { mode = 5, label = i18n("host_explorer_stats.syn_vs_rst") },
+   { mode = 6, label = i18n("host_explorer_stats.syn_vs_synack") },
+   { mode = 7, label = i18n("host_explorer_stats.tcp_packets_sr") },
+   { mode = 8, label = i18n("host_explorer_stats.tcp_bytes_sr") }
 }
 
 
@@ -45,8 +45,8 @@ local show_remote  = true
 local local_hosts  = { }
 local remote_hosts = { }
 local max_r        = 0
-local local_label  = "Local Hosts"
-local remote_label = "Remote Hosts"
+local local_label  = i18n("host_explorer_stats.local_hosts")
+local remote_label = i18n("host_explorer_stats.remote_hosts")
 local x_label
 local y_label
 local bubble_mode         = tonumber(_GET["bubble_mode"]) or 0
@@ -59,32 +59,32 @@ for _, mode in ipairs(modes) do
 end
 
 if(bubble_mode == 0) then
-   x_label = 'Flows as Server'
-   y_label = 'Flows as Client'
+   x_label = i18n("host_explorer_stats.flows_as_server")
+   y_label = i18n("host_explorer_stats.flows_as_client")
 elseif(bubble_mode == 1) then
-   x_label = 'Unreachable Flows as Server'
-   y_label = 'Unreachable Flows as Client'
+   x_label = i18n("host_explorer_stats.unreacheable_flows_as_server")
+   y_label = i18n("host_explorer_stats.unreacheable_flows_as_client")
 elseif(bubble_mode == 2) then
-   x_label = 'Misbehaving Flows as Server'
-   y_label = 'Misbehaving Flows as Client'
+   x_label = i18n("host_explorer_stats.misbehaving_flows_as_server")
+   y_label = i18n("host_explorer_stats.misbehaving_flows_as_client")
 elseif(bubble_mode == 3) then
-   x_label = 'Positive DNS Replies Received'
-   y_label = 'DNS Queries Sent'
+   x_label = i18n("host_explorer_stats.pos_dns_rr")
+   y_label = i18n("host_explorer_stats.dns_queries_sent")
 elseif(bubble_mode == 4) then
-   x_label = '# of SYN Sent'
-   y_label = '# of SYN Received'
+   x_label = i18n("host_explorer_stats.n_of_syn_sent")
+   y_label = i18n("host_explorer_stats.n_of_syn_received")
 elseif(bubble_mode == 5) then
-   x_label = '# of SYN Sent'
-   y_label = '# of RST Received'
+   x_label = i18n("host_explorer_stats.n_of_syn_sent")
+   y_label = i18n("host_explorer_stats.n_of_rst_received")
 elseif(bubble_mode == 6) then
-   x_label = '# of SYN Sent'
-   y_label = '# of SYNACK Received'
+   x_label = i18n("host_explorer_stats.n_of_syn_sent")
+   y_label = i18n("host_explorer_stats.n_of_synack_received")
 elseif(bubble_mode == 7) then
-   x_label = 'TCP Packets Sent'
-   y_label = 'TCP Packets Received'
+   x_label = i18n("host_explorer_stats.tcp_packets_sent")
+   y_label = i18n("host_explorer_stats.tcp_packets_received")
 elseif(bubble_mode == 8) then
-   x_label = 'TCP Bytes Sent'
-   y_label = 'TCP Bytes Received'
+   x_label = i18n("host_explorer_stats.tcp_bytes_sent")
+   y_label = i18n("host_explorer_stats.tcp_bytes_received")
 end
 
 function string.starts(String,Start)
@@ -181,7 +181,7 @@ print ([[
 	 <script type="text/javascript" src="/js/Chart.bundle.min.js"></script>
 
 	 <div class="dropdown mb-3">
-	 <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">]] .. (bubble_mode == 0 and 'Visualization' or current_label) ..[[
+	 <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">]] .. (bubble_mode == 0 and i18n("host_explorer_stats.all_flows") or current_label) ..[[
 	 <span class="caret"></span></button>
 	 <ul class="dropdown-menu scrollable-dropdown" role="menu" aria-labelledby="menu1">
 	 ]])

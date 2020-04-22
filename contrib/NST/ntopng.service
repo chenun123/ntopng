@@ -5,9 +5,9 @@ After=syslog.target network.target redis.service
 
 [Service]
 TimeoutStopSec=10s
-EnvironmentFile=/etc/sysconfig/ntopng
-WorkingDirectory=/usr/share/ntopng
-ExecStart=/usr/bin/ntopng $OPTIONS
+#EnvironmentFile=/etc/sysconfig/ntopng
+WorkingDirectory=/usr/local/share/ntopng
+ExecStart=/usr/local/bin/ntopng $OPTIONS
 
 [Install]
 WantedBy=multi-user.target

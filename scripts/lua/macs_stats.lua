@@ -50,7 +50,7 @@ if(not isEmptyString(_GET["device_type"])) then
    devtype_filter = '<span class="fas fa-filter"></span>'
 end
 
-page_utils.print_page_title('Mac List')
+page_utils.print_page_title(i18n("mac_stats.mac_list_title"))
 
 print [[
       <div id="table-mac"></div>
