@@ -123,204 +123,204 @@ if(page == "overview") then
     })
   )
 
-  print([[
-    <div class='container-fluid my-3'>
-      <div class='row'>
-        <div class="col-md-12">
-          <div id="am-alert" class="alert alert-success" style="display: none" role="alert">
-            <strong>]] .. i18n("success") .. [[</strong> <span class="alert-body"></span>
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col-md-12 col-12'>
-          <table class="table w-100 table-striped table-hover table-bordered" id="am-table">
-            <thead>
-              <tr>
-                <th>]].. i18n("flow_details.url") ..[[</th>
-                <th>]].. i18n("chart") ..[[</th>
-                <th>]].. i18n("threshold") .. [[</th>
-                <th>]].. i18n("active_monitoring_stats.last_measurement") .. [[</th>
-                <th>]].. i18n("system_stats.last_ip") .. [[</th>
-                <th>]].. i18n("active_monitoring_stats.measurement") .. [[</th>
-                <th>]].. i18n("actions") .. [[</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  -- print([[
+  --   <div class='container-fluid my-3'>
+  --     <div class='row'>
+  --       <div class="col-md-12">
+  --         <div id="am-alert" class="alert alert-success" style="display: none" role="alert">
+  --           <strong>]] .. i18n("success") .. [[</strong> <span class="alert-body"></span>
+  --           <button type="button" class="close" aria-label="Close">
+  --             <span aria-hidden="true">&times;</span>
+  --           </button>
+  --         </div>
+  --       </div>
+  --     </div>
+  --     <div class='row'>
+  --       <div class='col-md-12 col-12'>
+  --         <table class="table w-100 table-striped table-hover table-bordered" id="am-table">
+  --           <thead>
+  --             <tr>
+  --               <th>]].. i18n("flow_details.url") ..[[</th>
+  --               <th>]].. i18n("chart") ..[[</th>
+  --               <th>]].. i18n("threshold") .. [[</th>
+  --               <th>]].. i18n("active_monitoring_stats.last_measurement") .. [[</th>
+  --               <th>]].. i18n("system_stats.last_ip") .. [[</th>
+  --               <th>]].. i18n("active_monitoring_stats.measurement") .. [[</th>
+  --               <th>]].. i18n("actions") .. [[</th>
+  --             </tr>
+  --           </thead>
+  --           <tbody>
+  --           </tbody>
+  --         </table>
+  --       </div>
+  --     </div>
+  --   </div>
 
-    <div id='am-edit-modal' class="modal fade" tabindex="-1" role="dialog">
-      <form method="post" id='am-edit-form'>
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">]] .. i18n("active_monitoring_stats.edit_record") .. [[</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body container-fluid">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("active_monitoring_stats.measurement") .. [[</label>
-                <div class="col-sm-5">
-                  ]].. generate_select("select-edit-measurement", "measurement", true, false, {}, "measurement-select") ..[[
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("about.host_callbacks_directory") .. [[</label>
-                <div class="col-sm-5">
-                  <input placeholder="yourhostname.org" required id="input-edit-host" type="text" name="host" class="form-control measurement-host" />
-                </div>
-              </div>
-	      <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("internals.periodicity") .. [[</label>
-                <div class="col-sm-5">
-                  ]].. generate_select("select-edit-granularity", "granularity", true, false, {}, "measurement-granularity") ..[[
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("threshold") .. [[</label>
-                <div class="col-sm-5">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text measurement-operator"></span>
-                    </div>
-                    <input placeholder="100" required id="input-edit-threshold" name="threshold" type="number" class="form-control rounded-right" min="10" max="10000">
-                    <span class="my-auto ml-1 measurement-unit"></span>
-                  </div>
-                </div>
-              </div>
-              <div id='script-description' class='alert alert-light' role='alert'>
-              ]] .. i18n("notes") ..[[
-              <ul>
-                <li>]] .. i18n("active_monitoring_stats.am_note_icmp") ..[[</li>
-                <li>]] .. i18n("active_monitoring_stats.am_note_http") ..[[</li>
-                <li>]] .. i18n("active_monitoring_stats.note_alert") ..[[</li>
-		<li>]] .. i18n("active_monitoring_stats.note_periodicity_change") ..[[</li>
-              </ul>
-              </div>
-              <span class="invalid-feedback"></span>
-            </div>
-            <div class="modal-footer">
-              <button id="btn-reset-defaults" type="button" class="btn btn-danger mr-auto">]] .. i18n("reset") .. [[</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">]] .. i18n("cancel") .. [[</button>
-              <button type="submit" class="btn btn-primary">]] .. i18n("apply") .. [[</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+  --   <div id='am-edit-modal' class="modal fade" tabindex="-1" role="dialog">
+  --     <form method="post" id='am-edit-form'>
+  --       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  --         <div class="modal-content">
+  --           <div class="modal-header">
+  --             <h5 class="modal-title">]] .. i18n("active_monitoring_stats.edit_record") .. [[</h5>
+  --             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  --               <span aria-hidden="true">&times;</span>
+  --             </button>
+  --           </div>
+  --           <div class="modal-body container-fluid">
+  --             <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("active_monitoring_stats.measurement") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 ]].. generate_select("select-edit-measurement", "measurement", true, false, {}, "measurement-select") ..[[
+  --               </div>
+  --             </div>
+  --             <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("about.host_callbacks_directory") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 <input placeholder="yourhostname.org" required id="input-edit-host" type="text" name="host" class="form-control measurement-host" />
+  --               </div>
+  --             </div>
+	--       <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("internals.periodicity") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 ]].. generate_select("select-edit-granularity", "granularity", true, false, {}, "measurement-granularity") ..[[
+  --               </div>
+  --             </div>
+  --             <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("threshold") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 <div class="input-group">
+  --                   <div class="input-group-prepend">
+  --                     <span class="input-group-text measurement-operator"></span>
+  --                   </div>
+  --                   <input placeholder="100" required id="input-edit-threshold" name="threshold" type="number" class="form-control rounded-right" min="10" max="10000">
+  --                   <span class="my-auto ml-1 measurement-unit"></span>
+  --                 </div>
+  --               </div>
+  --             </div>
+  --             <div id='script-description' class='alert alert-light' role='alert'>
+  --             ]] .. i18n("notes") ..[[
+  --             <ul>
+  --               <li>]] .. i18n("active_monitoring_stats.am_note_icmp") ..[[</li>
+  --               <li>]] .. i18n("active_monitoring_stats.am_note_http") ..[[</li>
+  --               <li>]] .. i18n("active_monitoring_stats.note_alert") ..[[</li>
+	-- 	<li>]] .. i18n("active_monitoring_stats.note_periodicity_change") ..[[</li>
+  --             </ul>
+  --             </div>
+  --             <span class="invalid-feedback"></span>
+  --           </div>
+  --           <div class="modal-footer">
+  --             <button id="btn-reset-defaults" type="button" class="btn btn-danger mr-auto">]] .. i18n("reset") .. [[</button>
+  --             <button type="button" class="btn btn-secondary" data-dismiss="modal">]] .. i18n("cancel") .. [[</button>
+  --             <button type="submit" class="btn btn-primary">]] .. i18n("apply") .. [[</button>
+  --           </div>
+  --         </div>
+  --       </div>
+  --     </form>
+  --   </div>
 
-    <div id='am-add-modal' class="modal fade" tabindex="-1" role="dialog">
-      <form method="post" id='am-add-form'>
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">]] .. i18n("active_monitoring_stats.add_record") .. [[</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body container-fluid">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("active_monitoring_stats.measurement") .. [[</label>
-                <div class="col-sm-5">
-                  ]] .. generate_select("select-add-measurement", "measurement", true, false, {}, "measurement-select") ..[[
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("about.host_callbacks_directory") .. [[</label>
-                <div class="col-sm-5">
-                  <input placeholder="yourhostname.org" required id="input-add-host" type="text" name="host" class="form-control measurement-host" />
-                </div>
-              </div>
-	      <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("internals.periodicity") .. [[</label>
-                <div class="col-sm-5">
-                  ]].. generate_select("select-add-granularity", "granularity", true, false, {}, "measurement-granularity") ..[[
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">]] .. i18n("threshold") .. [[</label>
-                <div class="col-sm-5">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text measurement-operator"></span>
-                    </div>
-                    <input placeholder="100" required id="input-add-threshold" value="100" name="threshold" type="number" class="form-control rounded-right" min="1" max="10000">
-                    <span class="my-auto ml-1 measurement-unit"></span>
-                  </div>
-                </div>
-              </div>
-              <div id='script-description' class='alert alert-light' role='alert'>
-              ]] .. i18n("notes") ..[[
-              <ul>
-                <li>]] .. i18n("active_monitoring_stats.am_note_icmp") ..[[</li>
-                <li>]] .. i18n("active_monitoring_stats.am_note_http") ..[[</li>
-                <li>]] .. i18n("active_monitoring_stats.note_alert") ..[[</li>
-              </ul>
-              </div>
-              <span class="invalid-feedback"></span>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">]] .. i18n("cancel") .. [[</button>
-              <button type="submit" class="btn btn-primary">]] .. i18n("add") .. [[</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+  --   <div id='am-add-modal' class="modal fade" tabindex="-1" role="dialog">
+  --     <form method="post" id='am-add-form'>
+  --       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  --         <div class="modal-content">
+  --           <div class="modal-header">
+  --             <h5 class="modal-title">]] .. i18n("active_monitoring_stats.add_record") .. [[</h5>
+  --             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  --               <span aria-hidden="true">&times;</span>
+  --             </button>
+  --           </div>
+  --           <div class="modal-body container-fluid">
+  --             <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("active_monitoring_stats.measurement") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 ]] .. generate_select("select-add-measurement", "measurement", true, false, {}, "measurement-select") ..[[
+  --               </div>
+  --             </div>
+  --             <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("about.host_callbacks_directory") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 <input placeholder="yourhostname.org" required id="input-add-host" type="text" name="host" class="form-control measurement-host" />
+  --               </div>
+  --             </div>
+	--       <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("internals.periodicity") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 ]].. generate_select("select-add-granularity", "granularity", true, false, {}, "measurement-granularity") ..[[
+  --               </div>
+  --             </div>
+  --             <div class="form-group row">
+  --               <label class="col-sm-3 col-form-label">]] .. i18n("threshold") .. [[</label>
+  --               <div class="col-sm-5">
+  --                 <div class="input-group">
+  --                   <div class="input-group-prepend">
+  --                     <span class="input-group-text measurement-operator"></span>
+  --                   </div>
+  --                   <input placeholder="100" required id="input-add-threshold" value="100" name="threshold" type="number" class="form-control rounded-right" min="1" max="10000">
+  --                   <span class="my-auto ml-1 measurement-unit"></span>
+  --                 </div>
+  --               </div>
+  --             </div>
+  --             <div id='script-description' class='alert alert-light' role='alert'>
+  --             ]] .. i18n("notes") ..[[
+  --             <ul>
+  --               <li>]] .. i18n("active_monitoring_stats.am_note_icmp") ..[[</li>
+  --               <li>]] .. i18n("active_monitoring_stats.am_note_http") ..[[</li>
+  --               <li>]] .. i18n("active_monitoring_stats.note_alert") ..[[</li>
+  --             </ul>
+  --             </div>
+  --             <span class="invalid-feedback"></span>
+  --           </div>
+  --           <div class="modal-footer">
+  --             <button type="button" class="btn btn-secondary" data-dismiss="modal">]] .. i18n("cancel") .. [[</button>
+  --             <button type="submit" class="btn btn-primary">]] .. i18n("add") .. [[</button>
+  --           </div>
+  --         </div>
+  --       </div>
+  --     </form>
+  --   </div>
 
-    <div id='am-delete-modal' class="modal fade" tabindex="-1" role="dialog">
-      <form id='am-delete-form'>
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">]] .. i18n("delete") .. [[: <span id="delete-host"></span></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>
-		              ]] .. i18n("active_monitoring_stats.confirm_delete") .. [[
-              </p>
-              <span class="invalid-feedback"></span>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">]] .. i18n("cancel") .. [[</button>
-              <button id="btn-delete-am" type="submit" class="btn btn-danger">]] .. i18n("delete") .. [[</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+  --   <div id='am-delete-modal' class="modal fade" tabindex="-1" role="dialog">
+  --     <form id='am-delete-form'>
+  --       <div class="modal-dialog modal-dialog-centered" role="document">
+  --         <div class="modal-content">
+  --           <div class="modal-header">
+  --             <h5 class="modal-title">]] .. i18n("delete") .. [[: <span id="delete-host"></span></h5>
+  --             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  --               <span aria-hidden="true">&times;</span>
+  --             </button>
+  --           </div>
+  --           <div class="modal-body">
+  --             <p>
+	-- 	              ]] .. i18n("active_monitoring_stats.confirm_delete") .. [[
+  --             </p>
+  --             <span class="invalid-feedback"></span>
+  --           </div>
+  --           <div class="modal-footer">
+  --             <button type="button" class="btn btn-secondary" data-dismiss="modal">]] .. i18n("cancel") .. [[</button>
+  --             <button id="btn-delete-am" type="submit" class="btn btn-danger">]] .. i18n("delete") .. [[</button>
+  --           </div>
+  --         </div>
+  --       </div>
+  --     </form>
+  --   </div>
 
-    <div style="margin-bottom: 1rem">
-        <form action="]] .. ntop.getHttpPrefix() .. [[/plugins/get_active_monitoring_config.lua" class="form-inline" method="GET">
-            <button type="submit" class="btn btn-secondary"><span>]] .. i18n('config_scripts.config_export') .. [[</span></button>
-        </form><button id="import-modal-btn" data-toggle="modal" data-target="#import-modal" class="btn btn-secondary"><span>]] .. i18n('config_scripts.config_import') .. [[</span></button>
-	<form class="form-inline" method="POST" id="reset-form">
-	  <input type="hidden" name="csrf" value="]].. ntop.getRandomCSRFValue() ..[["/>
-	  <input type="hidden" name="action" value="reset_config"/>
-	  <button type="button" id="reset-modal-btn" data-toggle="modal" data-target="#reset-modal" class="btn btn-secondary"><span>]] .. i18n('config_scripts.config_reset') .. [[</span></button>
-	</form>
-    </div>
+  --   <div style="margin-bottom: 1rem">
+  --       <form action="]] .. ntop.getHttpPrefix() .. [[/plugins/get_active_monitoring_config.lua" class="form-inline" method="GET">
+  --           <button type="submit" class="btn btn-secondary"><span>]] .. i18n('config_scripts.config_export') .. [[</span></button>
+  --       </form><button id="import-modal-btn" data-toggle="modal" data-target="#import-modal" class="btn btn-secondary"><span>]] .. i18n('config_scripts.config_import') .. [[</span></button>
+	-- <form class="form-inline" method="POST" id="reset-form">
+	--   <input type="hidden" name="csrf" value="]].. ntop.getRandomCSRFValue() ..[["/>
+	--   <input type="hidden" name="action" value="reset_config"/>
+	--   <button type="button" id="reset-modal-btn" data-toggle="modal" data-target="#reset-modal" class="btn btn-secondary"><span>]] .. i18n('config_scripts.config_reset') .. [[</span></button>
+	-- </form>
+  --   </div>
 
-    <div>
-      ]].. i18n("notes") .. [[<ul>
-	<li>]].. i18n("active_monitoring_stats.note3", {product=info.product}) ..[[</li>
-	<li>]].. i18n("active_monitoring_stats.note_alert") ..[[</li>
-      </ul>
-    </div>
-  ]])
+  --   <div>
+  --     ]].. i18n("notes") .. [[<ul>
+	-- <li>]].. i18n("active_monitoring_stats.note3", {product=info.product}) ..[[</li>
+	-- <li>]].. i18n("active_monitoring_stats.note_alert") ..[[</li>
+  --     </ul>
+  --   </div>
+  -- ]])
 
   local measurements_info = {}
 

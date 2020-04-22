@@ -122,11 +122,11 @@ end
 print("</td></tr>")
 
 vers = string.split(info["version.git"], ":")
-if((vers ~= nil) and (vers[2] ~= nil)) then
-   ntopng_git_url = "<A HREF=\"https://github.com/ntop/ntopng/commit/".. vers[2] .."\">"..info["version"].." ("..info["revision"]..")</A>"
-else
+-- if((vers ~= nil) and (vers[2] ~= nil)) then
+--    ntopng_git_url = "<A HREF=\"https://github.com/ntop/ntopng/commit/".. vers[2] .."\">"..info["version"].." ("..info["revision"]..")</A>"
+-- else
    ntopng_git_url = info["version"]
-end
+-- end
 
 print("<tr><th>"..i18n("about.version").."</th><td colspan=2>"..ntopng_git_url.." - ")
 
@@ -149,9 +149,9 @@ if (ndpi_ver ~= nil) then
      vers = string.split(v_all, ":")
      ndpi_hash = vers[1]
      ndpi_date = vers[2]
-     print("<tr><th><A href=\"http://www.ntop.org/products/ndpi/\" target=\"_blank\">nDPI</a></th><td colspan=2> <A HREF=\"https://github.com/ntop/nDPI/commit/\"".. ndpi_hash ..">"..ndpi_date.."</A></td></tr>\n")
+     print("<tr><th>nDPI</th><td colspan=2> ".. ndpi_hash ..">"..ndpi_date.."</td></tr>\n")
   else
-     print("<tr><th><A href=\"http://www.ntop.org/products/ndpi/\" target=\"_blank\">nDPI</A></th><td colspan=2> <A HREF=\"https://github.com/ntop/nDPI/\">"..ndpi_ver.."</A></td></tr>\n")
+     print("<tr><th><nDPI</th><td colspan=2> "..ndpi_ver.."</td></tr>\n")
   end
 end
 

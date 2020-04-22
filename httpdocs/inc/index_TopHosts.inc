@@ -1,9 +1,9 @@
-<h4 class='mb-2'>Top Hosts (Send+Receive)</h4>
+<h4 class='mb-2'>顶级主机（发送+接收）</h4>
 <div class="my-2">
    <div class="pie-chart m-auto" id="topHosts">
    </div>
 </div>
-<span class="help-block">Click on the host for more information.</span>
+<span class="help-block">请单击主机查看有关详细信息。</span>
 <div class='my-3'></div>
 <script type='text/javascript'>
 window.onload = () => {

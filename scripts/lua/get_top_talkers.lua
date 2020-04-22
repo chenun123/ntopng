@@ -76,14 +76,14 @@ local function printTopTalkersFromTable(table, add_vlan)
    if(table == nil or table["vlan"] == nil) then return "[ ]\n" end
 
    local elements = "{\n"
-   elements = elements..'"senders": [\n'
+   elements = elements..'"'..i18n("senders")..'": [\n'
    local result = getTopTalkersFromJSONDirection(table, "senders", add_vlan)
    if(result ~= "") then
       result = string.sub(result, 1, -3) --remove comma
    end
    elements = elements..result
    elements = elements.."],\n"
-   elements = elements..'"receivers": [\n'
+   elements = elements..'"'..i18n("receivers")..'": [\n'
    result = getTopTalkersFromJSONDirection(table, "receivers", add_vlan)
    if(result ~= "") then
       result = string.sub(result, 1, -3) --remove comma

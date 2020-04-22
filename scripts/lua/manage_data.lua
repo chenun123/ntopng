@@ -135,7 +135,7 @@ print [[
           <input type=hidden name="ifid" value=]] print(tostring(getInterfaceId(ifname))) print[[>
           <div class='form-row align-items-center'>
             <div class="form-group col-12">
-              <label class="d-block">Select Export Type</label>
+              <label class="d-block">]]print(i18n("manage_data.sel_export_type")) print[[</label>
               <div class="btn-group btn-group-toggle" data-toggle="buttons" id="export_hosts_buttons" name="export_hosts_buttons">
                 <label class="btn btn-secondary active">
                   <input type="radio" id="all_hosts" name="mode" value="all" autocomplete="off" data-toggle="toggle"  checked="checked">]] print(i18n("manage_data.all_hosts")) print[[
@@ -152,11 +152,11 @@ print [[
               </div>
             </div>
             <div class="form-group col-auto">
-              <label for="export_host">Insert Host IP or Mac Address or /24</label>
+              <label for="export_host">]]print(i18n("manage_data.export_host")) print[[</label>
               <input type="text" id="export_host" data-host="host" name="host" placeholder="]] print(i18n("manage_data.ip_or_mac_address")) print[[" class="form-control" size="24" disabled required/>
             </div>
             <div class="form-group col-auto">
-              <label for="export_vlan">Insert VLAN Host</label>
+              <label for="export_vlan">]]print(i18n("manage_data.export_vlan")) print[[</label>
               <input type="number" min="1" max="65535" placeholder="]] print(i18n("vlan")) print[[" id="export_vlan" name="vlan" class="form-control" value="" disabled/>
             </div>
           </div>
@@ -183,7 +183,7 @@ print [[
 
 <div id="delete" class="tab-pane ]] print(tab_delete_active) print[[">
   <section class="card">
-    <h5 class="card-header">]] print(i18n("manage_data.delete")) print[[ and Interface Data</h5>
+    <h5 class="card-header">]] print(i18n("manage_data.delete")) print(i18n("manage_data.del_title")) print[[</h5>
     <div class="card-body">
       <div id="search_card">
         <form class="host_data_form" id="host_data_form_delete" method="POST">
@@ -191,11 +191,11 @@ print [[
           <input type="hidden" name="ifid" value=]] print(tostring(getInterfaceId(ifname))) print[[>
           <div class="form-row">
             <div class="form-group col-md-3 col-sm-12 col-xs-12">
-              <label for="delete_host">Insert Host IP or Mac Address or /24</label>
+              <label for="delete_host">]] print(i18n("manage_data.export_host")) print[[</label>
               <input type="text" required id="delete_host" data-host="host" name="host" placeholder="]] print(i18n("manage_data.ip_or_mac_address")) print[[" class="form-control" size="24"/>
             </div>
             <div class="form-group col-md-3 col-sm-12 col-xs-12">
-              <label for="delete_vlan">Insert VLAN</label>
+              <label for="delete_vlan">]] print(i18n("manage_data.del_vlan")) print[[</label>
               <input type="number" min="1" max="65535" placeholder="]] print(i18n("vlan")) print[[" id="delete_vlan" name="vlan" class="form-control" value=""/>
             </div>
           </div>

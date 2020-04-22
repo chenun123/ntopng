@@ -374,7 +374,7 @@ function graph_utils.drawGraphs(ifid, schema, tags, zoomLevel, baseurl, selected
    local data = ts_utils.query(schema, tags, start_time, end_time)
 
    if(data) then
-      print [[
+      print ([[
 
 <style>
 #chart_container {
@@ -401,13 +401,13 @@ font-family: Arial, Helvetica, sans-serif;
 
 <div class="container-fluid">
   <ul class="nav nav-tabs" role="tablist" id="historical-tabs-container">
-    <li class="nav-item active"> <a class="nav-link active" href="#historical-tab-chart" role="tab" data-toggle="tab"> Chart </a> </li>
-]]
+    <li class="nav-item active"> <a class="nav-link active" href="#historical-tab-chart" role="tab" data-toggle="tab"> 
+]] .. i18n("graphs.chart") .. ' </a> </li> ')
 
 local show_historical_tabs = ntop.getPrefs().is_dump_flows_to_mysql_enabled and options.show_historical
 
 if show_historical_tabs then
-   print('<li class="nav-item"><a class="nav-link" href="#historical-flows" role="tab" data-toggle="tab" id="tab-flows-summary"> Flows </a> </li>\n')
+   print('<li class="nav-item"><a class="nav-link" href="#historical-flows" role="tab" data-toggle="tab" id="tab-flows-summary"> ' .. i18n("graphs.flows") .. ' </a> </li>\n')
 end
 
 print[[
@@ -430,11 +430,11 @@ local page_params = {
 }
 
 if(options.timeseries) then
-   print [[
+   print ([[
    <div class="dropdown d-inline">
-      <button class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown">Timeseries <span class="caret"></span></button>
+      <button class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"> ]] .. i18n("graphs.timeseries") .. [[ <span class="caret"></span></button>
       <div class="dropdown-menu scrollable-dropdown">
-   ]]
+   ]])
 
    graph_common.printSeries(options, tags, start_time, end_time, baseurl, page_params)
    graph_common.printGraphMenuEntries(graph_common.printEntry, nil, start_time, end_time)
@@ -445,7 +445,7 @@ if(options.timeseries) then
    ]]
 end -- options.timeseries
 
-print('&nbsp;Timeframe:  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="graph_zoom">\n')
+print('&nbsp;'.. i18n("graphs.timeframe").. ':  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="graph_zoom">\n')
 
 for k,v in ipairs(graph_common.zoom_vals) do
    -- display 1 minute button only for networks and interface stats
@@ -479,7 +479,7 @@ for k,v in ipairs(graph_common.zoom_vals) do
    ::continue::
 end
 
-print [[
+print ([[
 </div>
 </div>
 
@@ -496,7 +496,7 @@ print [[
 <div id="legend"></div>
 <div id="chart_legend"></div>
 <div id="chart" style="margin-right: 50px; margin-left: 10px; display: table-cell"></div>
-<p style='color: lightgray'><small>NOTE: Click on the graph to zoom.</small>
+<p style='color: lightgray'><small> ]] .. i18n("graphs.click_desc").. [[ </small>
 
 </td>
 
@@ -507,7 +507,7 @@ print [[
 <div style="margin-left: 10px; display: table">
 <div id="chart_container" style="display: table-row">
 
-]]
+]])
 
 local format_as_bps = true
 local format_as_bytes = false
@@ -544,7 +544,7 @@ print [[
    <table class="table table-bordered table-striped" style="border: 0; margin-right: 10px; display: table-cell">
    ]]
 
-print('   <tr><th>&nbsp;</th><th>Time</th><th>Value</th></tr>\n')
+print('   <tr><th>&nbsp;</th><th>'.. i18n("graphs.time")..'</th><th>'.. i18n("graphs.value")..'</th></tr>\n')
 
 local stats = data.statistics
 
@@ -559,31 +559,31 @@ if(stats ~= nil) then
   end
 
    if format_as_bytes then
-      if(minval_time > 0) then print('   <tr><th>Min</th><td>' .. os.date("%x %X", minval_time) .. '</td><td>' .. bytesToSize((stats.min_val*8) or "") .. '</td></tr>\n') end
-      if(maxval_time > 0) then print('   <tr><th>Max</th><td>' .. os.date("%x %X", maxval_time) .. '</td><td>' .. bytesToSize((stats.max_val*8) or "") .. '</td></tr>\n') end
-      print('   <tr><th>Last</th><td>' .. os.date("%x %X", lastval_time) .. '</td><td>' .. bytesToSize(lastval*8)  .. '</td></tr>\n')
-      print('   <tr><th>Average</th><td colspan=2>' .. bytesToSize(stats.average*8) .. '</td></tr>\n')
-      print('   <tr><th>95th <A HREF=https://en.wikipedia.org/wiki/Percentile>Percentile</A></th><td colspan=2>' .. bytesToSize(stats["95th_percentile"]*8) .. '</td></tr>\n')
+      if(minval_time > 0) then print('   <tr><th>'.. i18n("graphs.min")..'</th><td>' .. os.date("%x %X", minval_time) .. '</td><td>' .. bytesToSize((stats.min_val*8) or "") .. '</td></tr>\n') end
+      if(maxval_time > 0) then print('   <tr><th>'.. i18n("graphs.max")..'</th><td>' .. os.date("%x %X", maxval_time) .. '</td><td>' .. bytesToSize((stats.max_val*8) or "") .. '</td></tr>\n') end
+      print('   <tr><th>'.. i18n("graphs.last")..'</th><td>' .. os.date("%x %X", lastval_time) .. '</td><td>' .. bytesToSize(lastval*8)  .. '</td></tr>\n')
+      print('   <tr><th>'.. i18n("graphs.average")..'</th><td colspan=2>' .. bytesToSize(stats.average*8) .. '</td></tr>\n')
+      print('   <tr><th>'.. i18n("graphs.95th_desc")..'</th><td colspan=2>' .. bytesToSize(stats["95th_percentile"]*8) .. '</td></tr>\n')
    elseif(not format_as_bps) then
-     if(minval_time > 0) then print('   <tr><th>Min</th><td>' .. os.date("%x %X", minval_time) .. '</td><td>' .. formatValue(stats.min_val or "") .. '</td></tr>\n') end
-     if(maxval_time > 0) then print('   <tr><th>Max</th><td>' .. os.date("%x %X", maxval_time) .. '</td><td>' .. formatValue(stats.max_val or "") .. '</td></tr>\n') end
-     print('   <tr><th>Last</th><td>' .. os.date("%x %X", lastval_time) .. '</td><td>' .. formatValue(round(lastval), 1) .. '</td></tr>\n')
-     print('   <tr><th>Average</th><td colspan=2>' .. formatValue(round(stats.average, 2)) .. '</td></tr>\n')
-     print('   <tr><th>95th <A HREF=https://en.wikipedia.org/wiki/Percentile>Percentile</A></th><td colspan=2>' .. formatValue(round(stats["95th_percentile"], 2)) .. '</td></tr>\n')
+     if(minval_time > 0) then print('   <tr><th>'.. i18n("graphs.min")..'</th><td>' .. os.date("%x %X", minval_time) .. '</td><td>' .. formatValue(stats.min_val or "") .. '</td></tr>\n') end
+     if(maxval_time > 0) then print('   <tr><th>'.. i18n("graphs.max")..'</th><td>' .. os.date("%x %X", maxval_time) .. '</td><td>' .. formatValue(stats.max_val or "") .. '</td></tr>\n') end
+     print('   <tr><th>'.. i18n("graphs.last")..'</th><td>' .. os.date("%x %X", lastval_time) .. '</td><td>' .. formatValue(round(lastval), 1) .. '</td></tr>\n')
+     print('   <tr><th>'.. i18n("graphs.average")..'</th><td colspan=2>' .. formatValue(round(stats.average, 2)) .. '</td></tr>\n')
+     print('   <tr><th>'.. i18n("graphs.95th_desc")..'</th><td colspan=2>' .. formatValue(round(stats["95th_percentile"], 2)) .. '</td></tr>\n')
    else
-     if(minval_time > 0) then print('   <tr><th>Min</th><td>' .. os.date("%x %X", minval_time) .. '</td><td>' .. bitsToSize((stats.min_val*8) or "") .. '</td></tr>\n') end
-     if(maxval_time > 0) then print('   <tr><th>Max</th><td>' .. os.date("%x %X", maxval_time) .. '</td><td>' .. bitsToSize((stats.max_val*8) or "") .. '</td></tr>\n') end
-     print('   <tr><th>Last</th><td>' .. os.date("%x %X", lastval_time) .. '</td><td>' .. bitsToSize(lastval*8)  .. '</td></tr>\n')
-     print('   <tr><th>Average</th><td colspan=2>' .. bitsToSize(stats.average*8) .. '</td></tr>\n')
-     print('   <tr><th>95th <A HREF=https://en.wikipedia.org/wiki/Percentile>Percentile</A></th><td colspan=2>' .. bitsToSize(stats["95th_percentile"]*8) .. '</td></tr>\n')
-     print('   <tr><th>Total Traffic</th><td colspan=2>' .. bytesToSize(stats.total) .. '</td></tr>\n')
+     if(minval_time > 0) then print('   <tr><th>'.. i18n("graphs.min")..'</th><td>' .. os.date("%x %X", minval_time) .. '</td><td>' .. bitsToSize((stats.min_val*8) or "") .. '</td></tr>\n') end
+     if(maxval_time > 0) then print('   <tr><th>'.. i18n("graphs.max")..'</th><td>' .. os.date("%x %X", maxval_time) .. '</td><td>' .. bitsToSize((stats.max_val*8) or "") .. '</td></tr>\n') end
+     print('   <tr><th>'.. i18n("graphs.last")..'</th><td>' .. os.date("%x %X", lastval_time) .. '</td><td>' .. bitsToSize(lastval*8)  .. '</td></tr>\n')
+     print('   <tr><th>'.. i18n("graphs.average")..'</th><td colspan=2>' .. bitsToSize(stats.average*8) .. '</td></tr>\n')
+     print('   <tr><th>'.. i18n("graphs.95th_desc")..'</th><td colspan=2>' .. bitsToSize(stats["95th_percentile"]*8) .. '</td></tr>\n')
+     print('   <tr><th>'.. i18n("graphs.total_traffic")..'</th><td colspan=2>' .. bytesToSize(stats.total) .. '</td></tr>\n')
   end
 end
 
-print('   <tr><th>Selection Time</th><td colspan=2><div id=when></div></td></tr>\n')
+print('   <tr><th>'.. i18n("graphs.sel_time")..'</th><td colspan=2><div id=when></div></td></tr>\n')
 
 if top_talkers_utils.areTopEnabled(ifid) then
-   print('   <tr><th>Minute<br>Interface<br>Top Talkers</th><td colspan=2><div id=talkers></div></td></tr>\n')
+   print('   <tr><th>'.. i18n("graphs.top_enable_title")..'</th><td colspan=2><div id=talkers></div></td></tr>\n')
 end
 
 
@@ -686,14 +686,14 @@ $.ajax({
 	  type: 'GET',
 	  url: ']]
 	  print(ntop.getHttpPrefix().."/lua/get_top_talkers.lua?epoch='+point.value.x+'&addvlan=true")
-	    print [[',
+	    print ([[',
 		  data: { epoch: point.value.x },
 		  async: false,
 		  success: function(content) {
 		   var info = jQuery.parseJSON(content);
 		   $.each(info, function(i, n) {
 		     if (n.length > 0)
-		       infoHTML += "<li>"+capitaliseFirstLetter(i)+" [Avg Traffic/sec]<ol>";
+		       infoHTML += "<li>"+capitaliseFirstLetter(i)+" ]].. i18n("graphs.avg_traffic_per_sec") ..[[<ol>";
 		     var items = 0;
 		     var other_traffic = 0;
 		     $.each(n, function(j, m) {
@@ -707,14 +707,14 @@ $.ajax({
 			 other_traffic += m.value;
 		     });
 		     if (other_traffic > 0)
-			 infoHTML += "<li>Other ("+fbits((other_traffic*8)/60)+")</li>";
+			 infoHTML += "<li>]].. i18n("graphs.other") ..[[ ("+fbits((other_traffic*8)/60)+")</li>";
 		     if (n.length > 0)
 		       infoHTML += "</ol></li>";
 		   });
 		   infoHTML += "</ul></li></li>";
 	   }
    });
-infoHTML += "</ul>";]]
+infoHTML += "</ul>";]])
 
 print [[
 		this.element.innerHTML = '';
@@ -804,7 +804,7 @@ print[[
 
 ]]
 else
-   print("<div class=\"alert alert-danger\"><img src=".. ntop.getHttpPrefix() .. "/img/warning.png> No data found</div>")
+   print("<div class=\"alert alert-danger\"><img src=".. ntop.getHttpPrefix() .. "/img/warning.png> ".. i18n("graphs.no_data_found") .."</div>")
 end -- if(data)
 end
 

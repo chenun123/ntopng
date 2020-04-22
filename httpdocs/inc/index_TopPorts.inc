@@ -1,13 +1,13 @@
 <div class="row">
    <div class='col'>
-      <h4>Top Client Ports</h4>
+      <h4>顶级客户端端口</h4>
       <div class="pie-chart m-auto" id="topClientPorts"></div>
-      <span class="help-block">Click on the port for more information.</span>
+      <span class="help-block">单击端口以获取更多信息。</span>
    </div>
    <div class='col'>
-      <h4>Top Client Ports</h4>
+      <h4>顶级客户端端口</h4>
       <div class="pie-chart m-auto" id="topServerPorts"></div>
-      <span class="help-block">Click on the port for more information.</span>
+      <span class="help-block">单击端口以获取更多信息。</span>
    </div>
 </div>
 <div class='my-3'></div>

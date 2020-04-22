@@ -1,6 +1,6 @@
-            <h4>Top Flow Talkers: Live</h4>
+            <h4>顶级流对话者：活动</h4>
 	    <div class="pie-chart" id="topSenders"></div>
-<span class="help-block" style="color: #dddddd;">Click on the host for more information.</span>
+<span class="help-block" style="color: #dddddd;">请单击主机查看有关详细信息。</span>
 <script type='text/javascript'>
 
 window.onload=function() {

@@ -733,12 +733,17 @@ function loggingSelector(label, comment, submit_field, redis_key)
 
   local logging_values = {"trace", "debug", "info", "normal", "warning", "error"}
   local color_map = {"secondary", "success", "info", "primary", "warning", "danger"}
-  local logging_keys = {}
+  local logging_keys = {i18n("trace"),  
+                        i18n("debug"),  
+                        i18n("info"), 
+                        i18n("normal"), 
+                        i18n("warning"),
+                        i18n("error")}
   local color = "secondary"
 
-  for i,v in ipairs(logging_values) do logging_keys[i] = firstToUpper(v) end
+  -- for i,v in ipairs(logging_values) do logging_keys[i] = firstToUpper(v) end
 
-  multipleTableButtonPrefs("Log level", "Choose the runtime logging level.",
+  multipleTableButtonPrefs(i18n("log_level"), i18n("log_desc"),
           logging_keys, logging_values, value, color_map, submit_field, redis_key)
 
   return(value)

@@ -381,11 +381,11 @@ page_utils.add_menubar_section({
          hidden = not is_admin or is_windows,
          url = '/lua/get_config.lua',
       },
-      {
-         entry = page_utils.menu_entries.conf_restore,
-         hidden = not is_admin or is_windows,
-         url = 'https://www.ntop.org/guides/ntopng/web_gui/settings.html#restore-configuration',
-      },
+      -- {
+      --    entry = page_utils.menu_entries.conf_restore,
+      --    hidden = not is_admin or is_windows,
+      --    url = 'https://www.ntop.org/guides/ntopng/web_gui/settings.html#restore-configuration',
+      -- },
    }
 })
 
@@ -477,49 +477,49 @@ page_utils.add_menubar_section(
 -- Developer
 
    
-if not info.oem then
-   page_utils.add_menubar_section(
-      {
-	 section = page_utils.menu_sections.dev,
-	 entries = {
-	    {
-	       entry = page_utils.menu_entries.plugins,
-	       url = '/lua/plugins_overview.lua',
-	    },
-	    {
-	       entry = page_utils.menu_entries.user_scripts_dev,
-	       url = '/lua/user_scripts_overview.lua',
-	    },
-	    {
-	       entry = page_utils.menu_entries.alert_definitions,
-	       url = '/lua/defs_overview.lua',
-	    },
-	    {
-	       entry = page_utils.menu_entries.directories,
-	       url = '/lua/directories.lua',
-	    },
-	    {
-	       entry = page_utils.menu_entries.api,
-	       url = 'https://www.ntop.org/guides/ntopng/api/',
-	    },
-	    {
-	       entry = page_utils.menu_entries.divider,
-	       hidden = not is_admin,
-	    },
-	    {
-	       entry = page_utils.menu_entries.widgets_list,
-	       hidden = not is_admin,
-	       url = '/lua/widgets_list.lua',
-	    },
-	    {
-	       entry = page_utils.menu_entries.datasources_list,
-	       hidden = not is_admin,
-	       url = '/lua/datasources_list.lua',
-	    },
-	 },
-      }
-   )
-end
+-- if not info.oem then
+--    page_utils.add_menubar_section(
+--       {
+-- 	 section = page_utils.menu_sections.dev,
+-- 	 entries = {
+-- 	    {
+-- 	       entry = page_utils.menu_entries.plugins,
+-- 	       url = '/lua/plugins_overview.lua',
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.user_scripts_dev,
+-- 	       url = '/lua/user_scripts_overview.lua',
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.alert_definitions,
+-- 	       url = '/lua/defs_overview.lua',
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.directories,
+-- 	       url = '/lua/directories.lua',
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.api,
+-- 	       url = 'https://www.ntop.org/guides/ntopng/api/',
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.divider,
+-- 	       hidden = not is_admin,
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.widgets_list,
+-- 	       hidden = not is_admin,
+-- 	       url = '/lua/widgets_list.lua',
+-- 	    },
+-- 	    {
+-- 	       entry = page_utils.menu_entries.datasources_list,
+-- 	       hidden = not is_admin,
+-- 	       url = '/lua/datasources_list.lua',
+-- 	    },
+-- 	 },
+--       }
+--    )
+-- end
 
 -- ##############################################
 
@@ -533,34 +533,6 @@ page_utils.add_menubar_section(
             entry = page_utils.menu_entries.about,
             url = '/lua/about.lua',
          },
-         {
-            entry = page_utils.menu_entries.telemetry,
-            url = '/lua/telemetry.lua',
-         },
-         {
-            entry = page_utils.menu_entries.blog,
-            url = 'http://blog.ntop.org/',
-         },
-         {
-            entry = page_utils.menu_entries.telegram,
-            url = 'https://t.me/ntop_community',
-         },
-
-         {
-            entry = page_utils.menu_entries.manual,
-            url = 'https://www.ntop.org/guides/ntopng/',
-         },
-         {
-            entry = page_utils.menu_entries.divider
-         },
-         {
-            entry = page_utils.menu_entries.report_issue,
-            url = 'https://github.com/ntop/ntopng/issues',
-         },
-         {
-            entry = page_utils.menu_entries.suggest_feature,
-            url = 'https://www.ntop.org/support/need-help-2/contact-us/',
-         }
       },
    }
 )
@@ -1120,6 +1092,4 @@ if(not is_admin) then
    dofile(dirs.installdir .. "/scripts/lua/inc/password_dialog.lua")
 end
 
-if not info.oem then
-   telemetry_utils.show_notice()
-end
+

@@ -936,7 +936,11 @@ function plugins_utils.loadModule(plugin_name, module_name)
   local lua_path = os_utils.fixPath(RUNTIME_PATHS.modules .. "/" .. plugin_name .. "/" .. module_name .. ".lua")
 
   if not ntop.exists(lua_path) then
-    return(nil)
+    lua_path = os_utils.fixPath(RUNTIME_PATHS.modules .. "/" .. plugin_name .. "/modules/" .. module_name .. ".lua")
+    if not ntop.exists(lua_path) then
+      tprint('not load ok ... for '.. lua_path)
+      return(nil)
+    end
   end
 
   return dofile(lua_path)

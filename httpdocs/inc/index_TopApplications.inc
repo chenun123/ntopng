@@ -1,8 +1,8 @@
-<h4 class='mb-2'>Top Application Protocols</h4>
+<h4 class='mb-2'>顶层应用程序协议</h4>
 <div class='my-2'>
    <div class="pie-chart m-auto" id="topApplicationProtocols"></div>
 </div>
-<span class="help-block">Click on the application for more information.</span>
+<span class="help-block">请单击应用程序查看有关详细信息。</span>
 <div class='my-3'></div>
 <script type='text/javascript'>
 window.onload = () => {

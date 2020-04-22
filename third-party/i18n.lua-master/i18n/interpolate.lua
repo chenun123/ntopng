@@ -24,11 +24,50 @@ local function interpolateField(string, variables)
     end)
 end
 
-local DEBUG = false
+local DEBUG = true
+
+
+function print_r ( t )
+  local print_r_cache={}
+  local function sub_print_r(t,indent)
+      if (print_r_cache[tostring(t)]) then
+          tprint(indent.."*"..tostring(t))
+      else
+          print_r_cache[tostring(t)]=true
+          if (type(t)=="table") then
+              for pos,val in pairs(t) do
+                  if (type(val)=="table") then
+                      tprint(indent.."["..pos.."] => "..tostring(t).." {")
+                      sub_print_r(val,indent..string.rep(" ",string.len(pos)+8))
+                      tprint(indent..string.rep(" ",string.len(pos)+6).."}")
+                  elseif (type(val)=="string") then
+                      tprint(indent.."["..pos..'] => "'..val..'"')
+                  else
+                      tprint(indent.."["..pos.."] => "..tostring(val))
+                  end
+              end
+          else
+              tprint(indent..tostring(t))
+          end
+      end
+  end
+  if (type(t)=="table") then
+      tprint(tostring(t).." {")
+      sub_print_r(t,"  ")
+      tprint("}")
+  else
+      sub_print_r(t,"  ")
+  end
+  tprint()
+end
+
 
 local function interpolate(pattern, variables)
   variables = variables or {}
   local result = pattern
+  tprint(pattern)
+  print_r(variables)
+
   result = interpolateValue(result, variables)
   result = interpolateField(result, variables)
 

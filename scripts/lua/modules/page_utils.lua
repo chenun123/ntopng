@@ -163,9 +163,9 @@ function page_utils.print_page_title(title)
    local help_link = page_utils.menu_entries[active_entry].help_link or ""
    print("<header class='mb-3'>")
    print("<h2 class='d-inline-block'>".. title .."</h2>")
-   if (not isEmptyString(help_link)) then
-      print("<a data-toggle='tooltip' title='".. i18n("open_documentation") .."' target='_newtab' href='".. help_link .."' class='text-muted float-right'><i class='fas fa-question-circle'></i></a>")
-   end
+   -- if (not isEmptyString(help_link)) then
+   --    print("<a data-toggle='tooltip' title='".. i18n("open_documentation") .."' target='_newtab' href='".. help_link .."' class='text-muted float-right'><i class='fas fa-question-circle'></i></a>")
+   -- end
    print("</header>")
 
 end
